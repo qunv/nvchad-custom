@@ -25,6 +25,13 @@ local plugins = {
     end
   },
   {
+    "rcarriga/nvim-dap-ui",
+    dependencies = "mfussenegger/nvim-dap",
+    init = function ()
+      require("dapui").setup()
+    end
+  },
+  {
     "neovim/nvim-lspconfig",
     config = function()
       require "plugins.configs.lspconfig"
