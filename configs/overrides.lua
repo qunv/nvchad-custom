@@ -22,26 +22,6 @@ M.treesitter = {
   },
 }
 
-M.mason = {
-  ensure_installed = {
-    -- lua stuff
-    "lua-language-server",
-    "stylua",
-
-    -- web dev stuff
-    "css-lsp",
-    "html-lsp",
-    "typescript-language-server",
-    "deno",
-    "prettier",
-
-    -- c/cpp stuff
-    "clangd",
-    "clang-format",
-    "gopls"
-  },
-}
-
 -- git support in nvimtree
 M.nvimtree = {
   git = {
@@ -56,6 +36,25 @@ M.nvimtree = {
       },
     },
   },
+}
+
+local cmp = require "cmp"
+M.cmp = {
+  mapping = {
+    ["<C-k>"] = cmp.mapping.select_prev_item(),
+    ["<C-j>"] = cmp.mapping.select_next_item(),
+  }
+}
+
+M.telescope = {
+  defaults = {
+    mappings = {
+      n = {
+        ["C-k"] = require("telescope.actions").move_selection_previous,
+        ["C-j"] = require("telescope.actions").move_selection_next,
+      },
+    },
+  }
 }
 
 return M

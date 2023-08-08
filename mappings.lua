@@ -1,20 +1,24 @@
 local M = {}
 
+M.disabled = {
+  n = {
+      ["<leader>b"] = "",
+      ["C-j"] = "",
+      ["C-k"] = "",
+  }
+}
+
 M.dap = {
   plugin = true,
   n = {
     ["<leader>db"] = {
+      "<cmd> DapContinue <CR>",
+      "Open debugging option"
+    },
+    ["<leader>bb"] = {
       "<cmd> DapToggleBreakpoint <CR>",
       "Add breakpoint at line"
     },
-    ["<leader>dus"] = {
-      function ()
-        local widgets = require('dap.ui.widgets');
-        local sidebar = widgets.sidebar(widgets.scopes);
-        sidebar.open();
-      end,
-      "Open debugging sidebar"
-    }
   }
 }
 

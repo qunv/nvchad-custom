@@ -1,8 +1,25 @@
+local overrides = require("custom.configs.overrides")
 local plugins = {
   {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
+        -- lua stuff
+        "lua-language-server",
+        "stylua",
+
+        -- web dev stuff
+        "css-lsp",
+        "html-lsp",
+        "typescript-language-server",
+        "deno",
+        "prettier",
+
+        -- c/cpp stuff
+        "clangd",
+        "clang-format",
+
+        -- go
         "gopls",
         "golines",
         "goimports"
@@ -10,10 +27,18 @@ local plugins = {
     },
   },
   {
+    "hrsh7th/nvim-cmp",
+		opts = overrides.cmp,
+  },
+  {
+    "nvim-tree/nvim-tree.lua",
+		opts = overrides.nvimtree,
+  },
+  {
     "mfussenegger/nvim-dap",
     init = function()
       require("core.utils").load_mappings("dap")
-    end
+    end,
   },
   {
     "dreamsofcode-io/nvim-dap-go",
@@ -29,6 +54,18 @@ local plugins = {
     dependencies = "mfussenegger/nvim-dap",
     init = function ()
       require("dapui").setup()
+    end,
+    config = function ()
+      local dap, dapui = require("dap"), require("dapui")
+      dap.listeners.after.event_initialized["dapui_config"] = function()
+        dapui.open()
+      end
+      dap.listeners.before.event_terminated["dapui_config"] = function()
+        dapui.close()
+      end
+      dap.listeners.before.event_exited["dapui_config"] = function()
+        dapui.close()
+      end
     end
   },
   {
