@@ -35,6 +35,14 @@ local plugins = {
 		opts = overrides.nvimtree,
   },
   {
+    "nvim-telescope/telescope.nvim",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    config = function ()
+      require "plugins.configs.telescope"
+      require "custom.configs.telescope"
+    end
+  },
+  {
     "mfussenegger/nvim-dap",
     init = function()
       require("core.utils").load_mappings("dap")
@@ -56,16 +64,7 @@ local plugins = {
       require("dapui").setup()
     end,
     config = function ()
-      local dap, dapui = require("dap"), require("dapui")
-      dap.listeners.after.event_initialized["dapui_config"] = function()
-        dapui.open()
-      end
-      dap.listeners.before.event_terminated["dapui_config"] = function()
-        dapui.close()
-      end
-      dap.listeners.before.event_exited["dapui_config"] = function()
-        dapui.close()
-      end
+      require("custom.configs.nvim-dap-ui").config()
     end
   },
   {
