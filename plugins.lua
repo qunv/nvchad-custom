@@ -27,6 +27,12 @@ local plugins = {
     },
   },
   {
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {"go", "html", "css", "bash", "json"},
+    },
+  },
+  {
     "hrsh7th/nvim-cmp",
 		opts = overrides.cmp,
   },
@@ -95,6 +101,12 @@ local plugins = {
   {
     "fatih/vim-go",
     ft = "go"
+  },
+  {
+    "ellisonleao/dotenv.nvim",
+    init = function ()
+      require('dotenv').setup()
+    end
   }
 }
 return plugins

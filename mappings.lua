@@ -7,6 +7,8 @@ M.disabled = {
       ["<C-k>"] = "",
       ["<C-n>"] = "", -- disabled default nvim-tree Toggle
       ["<leader>e"] = "", -- disabled default nvim-tree focus 
+      ["<tab>"] = "",
+      ["<S-tab>"] = "",
   }
 }
 
@@ -65,6 +67,27 @@ M.nvimtree = {
 
     -- focus
     -- ["<leader>e"] = { "<cmd> NvimTreeFocus <CR>", "Focus nvimtree" },
+  },
+}
+
+M.tabufline = {
+  plugin = true,
+
+  n = {
+    -- cycle through buffers
+    ["<C-l>"] = {
+      function()
+        require("nvchad.tabufline").tabuflineNext()
+      end,
+      "Goto next buffer",
+    },
+
+    ["<C-h>"] = {
+      function()
+        require("nvchad.tabufline").tabuflinePrev()
+      end,
+      "Goto prev buffer",
+    },
   },
 }
 
