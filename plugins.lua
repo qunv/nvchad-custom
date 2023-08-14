@@ -1,44 +1,19 @@
-local overrides = require("custom.configs.overrides")
 local plugins = {
   {
     "williamboman/mason.nvim",
-    opts = {
-      ensure_installed = {
-        -- lua stuff
-        "lua-language-server",
-        "stylua",
-
-        -- web dev stuff
-        "css-lsp",
-        "html-lsp",
-        "typescript-language-server",
-        "deno",
-        "prettier",
-
-        -- c/cpp stuff
-        "clangd",
-        "clang-format",
-
-        -- go
-        "gopls",
-        "golines",
-        "goimports"
-      },
-    },
+    opts = require("custom.configs.mason").opts
   },
   {
     "nvim-treesitter/nvim-treesitter",
-    opts = {
-      ensure_installed = {"go", "html", "css", "bash", "json"},
-    },
+    opts = require("custom.configs.treesitter").treesitter
   },
   {
     "hrsh7th/nvim-cmp",
-		opts = overrides.cmp,
+		opts = require("custom.configs.cmp").cmp,
   },
   {
     "nvim-tree/nvim-tree.lua",
-		opts = overrides.nvimtree,
+		opts = require("custom.configs.nvim-tree").nvimtree,
   },
   {
     "nvim-telescope/telescope.nvim",
