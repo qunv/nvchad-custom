@@ -1,7 +1,30 @@
 local telescope = require("telescope")
 local actions = require("telescope.actions")
 
+local set_picker_via_screen = function ()
+  local pickers = {
+    live_grep = {
+      layout_strategy = "vertical",
+      layout_config = {
+        prompt_position = "top",
+        width = 0.87,
+        height = 0.80,
+        preview_cutoff = 1,
+        mirror = true,
+      },
+    },
+  }
+  local screen_w = vim.opt.columns:get()
+  local screen_h = vim.opt.lines:get() - vim.opt.cmdheight:get()
+  if (screen_w < screen_h) then
+    return pickers
+  else
+    return nil
+  end
+end
+
 telescope.setup({
+  pickers = set_picker_via_screen(),
   defaults = {
     vimgrep_arguments = {
       "rg",
