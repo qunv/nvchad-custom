@@ -3,8 +3,10 @@ local M = {}
 M.disabled = {
   n = {
       ["<leader>b"] = "",
-      ["C-j"] = "",
-      ["C-k"] = "",
+      ["<C-j>"] = "",
+      ["<C-k>"] = "",
+      ["<C-n>"] = "", -- disabled default nvim-tree Toggle
+      ["<leader>e"] = "", -- disabled default nvim-tree focus 
   }
 }
 
@@ -52,6 +54,18 @@ M.gopher = {
       "Add yaml struct tags"
     }
   }
+}
+
+M.nvimtree = {
+  plugin = true,
+
+  n = {
+    -- toggle
+    ["<leader>1"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
+
+    -- focus
+    -- ["<leader>e"] = { "<cmd> NvimTreeFocus <CR>", "Focus nvimtree" },
+  },
 }
 
 return M

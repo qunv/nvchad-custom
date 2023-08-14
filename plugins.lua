@@ -92,5 +92,9 @@ local plugins = {
       vim.cmd [[silent! GoInstallDeps]]
     end,
   },
+  {
+    "fatih/vim-go",
+    ft = "go"
+  }
 }
 return plugins
