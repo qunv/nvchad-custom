@@ -14,9 +14,19 @@ local set_picker_via_screen = function ()
       },
     },
   }
-  local screen_w = vim.opt.columns:get()
-  local screen_h = vim.opt.lines:get() - vim.opt.cmdheight:get()
-  if (screen_w < screen_h) then
+
+  local handle = io.popen("xrandr --query | grep 'connected primary'")
+  if (handle == nil) then
+    return nil
+  end
+  local result = handle:read("*a")
+  handle:close()
+
+  local width, height = result:match("(%d+)x(%d+)")
+  width = tonumber(width)
+  height = tonumber(height)
+
+  if (width < height) then
     return pickers
   else
     return nil
