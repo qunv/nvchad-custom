@@ -19,10 +19,6 @@ M.opts = {
     "gopls",
     "golines",
     "goimports",
-
-    -- java
-    "jdtls",
-    "google-java-format"
   },
 }
 
