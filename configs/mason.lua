@@ -12,13 +12,17 @@ M.opts = {
     "prettier",
 
     -- c/cpp stuff
-    "clangd",
-    "clang-format",
+    -- "clangd",
+    -- "clang-format",
 
     -- go
     "gopls",
     "golines",
-    "goimports"
+    "goimports",
+
+    -- java
+    "jdtls",
+    "google-java-format"
   },
 }
 
