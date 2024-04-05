@@ -30,13 +30,16 @@ local plugins = {
     end,
   },
   {
-    "dreamsofcode-io/nvim-dap-go",
+    "leoluz/nvim-dap-go",
     ft = "go",
     dependencies = "mfussenegger/nvim-dap",
     config = function(_, opts)
       require("dap-go").setup(opts)
       require("core.utils").load_mappings("dap_go")
     end
+  },
+  {
+    "nvim-neotest/nvim-nio"
   },
   {
     "rcarriga/nvim-dap-ui",
@@ -82,6 +85,24 @@ local plugins = {
     init = function ()
       require('dotenv').setup()
     end
+  },
+  {
+    "windwp/nvim-ts-autotag",
+    init = function ()
+      require('nvim-ts-autotag').setup()
+    end
+  },
+  {
+    "ojroques/nvim-osc52",
+    init = function ()
+      require('osc52').setup()
+    end
+  },
+  {
+    "folke/noice.nvim",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+    }
   }
 }
 return plugins

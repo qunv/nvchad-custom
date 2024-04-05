@@ -63,7 +63,7 @@ M.nvimtree = {
 
   n = {
     -- toggle
-    ["<leader>1"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
+    ["<leader>1"] = { "<cmd> NvimTreeFocus <CR>", "Toggle nvimtree" },
 
     -- focus
     -- ["<leader>e"] = { "<cmd> NvimTreeFocus <CR>", "Focus nvimtree" },
@@ -87,6 +87,13 @@ M.tabufline = {
         require("nvchad.tabufline").tabuflinePrev()
       end,
       "Goto prev buffer",
+    },
+
+    ["<leader>qo"] = {
+      function()
+        require("nvchad.tabufline").close_buffer()
+      end,
+      "close buffer",
     },
   },
 }
