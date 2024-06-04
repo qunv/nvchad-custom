@@ -34,7 +34,18 @@ local set_picker_via_screen = function ()
 end
 
 telescope.setup({
-  pickers = set_picker_via_screen(),
+  pickers = {
+    live_grep = {
+      layout_strategy = "vertical",
+      layout_config = {
+        prompt_position = "top",
+        width = 0.87,
+        height = 0.80,
+        preview_cutoff = 1,
+        mirror = true,
+      },
+    },
+  },
   defaults = {
     vimgrep_arguments = {
       "rg",
@@ -92,16 +103,16 @@ telescope.setup({
 
 local M = {}
 
-M.telescope = {
-  defaults = {
-    mappings = {
-      n = {
-        ["C-k"] = require("telescope.actions").move_selection_previous,
-        ["C-j"] = require("telescope.actions").move_selection_next,
-        ["<Esc>"] = require("telescope.actions").close,
-      },
-    },
-  }
-}
+-- M.telescope = {
+--   defaults = {
+--     mappings = {
+--       n = {
+--         ["C-k"] = require("telescope.actions").move_selection_previous,
+--         ["C-j"] = require("telescope.actions").move_selection_next,
+--         ["<Esc>"] = require("telescope.actions").close,
+--       },
+--     },
+--   }
+-- }
 
 return M
